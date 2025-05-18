@@ -4,13 +4,19 @@ import { createUserRoute } from './infra/routes/userRoutes'
 import { staticFilePlugin } from './infra/plugins/fastifyStatic'
 import dotenv from 'dotenv'
 
-dotenv.config() 
+dotenv.config()
 
 const fastify = Fastify()
+
 
 fastify.register(fastifyMultipart)
 fastify.register(staticFilePlugin)
 fastify.register(createUserRoute)
+
+
+fastify.get('/', async (request, reply) => {
+  return { message: 'Bem vindo a API' }
+})
 
 const start = async () => {
   try {
