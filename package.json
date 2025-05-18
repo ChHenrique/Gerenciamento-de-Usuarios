@@ -1,11 +1,10 @@
 {
   "name": "gerenciamentodeusuarios",
-  "version": "1.0.0",
+  "version": "1.0.0",  "type": "module",
   "scripts": {
     "dev": "tsx --watch src/server.ts",
-    "prisma:generate": "npx prisma generate",
-    "build": "pnpm prisma:generate && tsc",
-    "start": "node dist/server.js"
+    "start": "tsx src/server.ts",
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
     "@fastify/multipart": "^9.0.3",
