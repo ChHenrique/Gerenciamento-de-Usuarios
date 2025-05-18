@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "tsx --watch src/server.ts",
     "start": "tsx src/server.ts",
-    "prisma:generate": "prisma generate"
+    "prisma:generate": "npx prisma generate"
   },
   "dependencies": {
     "@fastify/multipart": "^9.0.3",
