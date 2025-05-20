@@ -14,6 +14,13 @@ import { IUserRepository } from "../../domain/repositorys/IUserRepository";
         })
         return user
     }
+    
+    async getUserById(id: string): Promise<User | null> {
+         const user = await prisma.user.findUnique({
+            where: { id } 
+        })
+        return user
+    }
     async createUser(user: User): Promise<User | null> {
         const data = await prisma.user.create({
             data: { 

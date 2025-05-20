@@ -1,6 +1,6 @@
 import Fastify from 'fastify'
 import fastifyMultipart from '@fastify/multipart'
-import { createUserRoute } from './infra/routes/userRoutes'
+import { createUserRoute, updateUserRoute } from './infra/routes/userRoutes'
 import { staticFilePlugin } from './infra/plugins/fastifyStatic'
 import dotenv from 'dotenv'
 
@@ -12,6 +12,7 @@ const fastify = Fastify()
 fastify.register(fastifyMultipart)
 fastify.register(staticFilePlugin)
 fastify.register(createUserRoute)
+fastify.register(updateUserRoute)
 
 
 fastify.get('/', async (request, reply) => {

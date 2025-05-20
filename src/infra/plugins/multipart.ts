@@ -23,10 +23,7 @@ export class MultipartPlugin {
                 rawfields[part.fieldname] = part.value
             }
         }
-
-        const parsedData = userSchema.safeParse(rawfields);
-        if (!parsedData.success) throw new ServerError("Bad Request");
         
-        return parsedData.data;
+        return rawfields;
     }
 }

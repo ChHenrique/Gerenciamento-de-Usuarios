@@ -4,6 +4,7 @@ import { userSchemaDTO } from "../../dto/userSchemaDTO";
 import { ServerError } from "../../utils/serverError";
 import bcrypt from "bcryptjs";
 import { User } from "../../domain/entities/user";
+import { userSchema } from "../../schemas/user.Schema";
 
 export class UserCreateUserCase {
     constructor(
@@ -11,6 +12,10 @@ export class UserCreateUserCase {
     ){}
 
     async execute(data: userSchemaDTO){
+
+        const parsedData = userSchema.safeParse(data);
+        if (!parsedData.success) throw new ServerError("Bad Request");
+
         const { name, email, password, photoUrl } = data
 
         const isEmailExists = await this.userRepository.getUserByEmail(email)
