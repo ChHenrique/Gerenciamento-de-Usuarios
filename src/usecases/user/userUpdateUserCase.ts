@@ -15,11 +15,11 @@ export class userUpdateUserCase {
 
         const { name, email, password, photoUrl } = data
 
-        const userExists = await this.userRepository.getUserById(id)
+        const userExists = await this.userRepository.getUserById(id || '')
         if (!userExists) throw new ServerError("User not found", 404)
 
         if (email !== userExists.email) {
-            const isEmailExists = await this.userRepository.getUserByEmail(email)
+            const isEmailExists = await this.userRepository.getUserByEmail(email || '')
             if (isEmailExists) throw new ServerError("Email already in use", 409)
         }
 
