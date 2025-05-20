@@ -8,7 +8,7 @@ datasource db {
 }
 
 model User {
-  id        String @id @default(uuid()) // PostgreSQL precisa de um ID único gerado
+  id        String @id @default(uuid()) 
   name      String
   photoUrl  String
   email     String @unique
